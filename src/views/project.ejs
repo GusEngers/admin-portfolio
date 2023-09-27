@@ -30,6 +30,12 @@
         rows="10"
       ></textarea>
 
+      <label for="tasks-group">Descripción de Proyecto:</label>
+      <div id="tasks-group">
+        <input type="text" name="tasks" />
+      </div>
+      <button type="button" onclick="addTask()">Añadir Tarea</button>
+
       [% if(!!techs.length) { %]
       <label for="techs-group">Tecnologías usadas:</label>
       <div id="techs-group">
@@ -78,10 +84,15 @@
 
       <label for="images">Seleccionar Imágenes:</label>
       <label>
-        <input type="file" id="images" name="images" multiple/>
+        <input type="file" id="images" name="images" multiple />
       </label>
 
+      [% if(!!techs.length) { %]
       <input type="submit" value="Enviar" />
+      [% } else { %]
+      <p>¡Añadir Tecnoogías primero!</p>
+      <input type="submit" value="Enviar" disabled />
+      [% } %]
     </form>
   </body>
 </html>

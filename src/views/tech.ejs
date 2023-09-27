@@ -22,15 +22,20 @@
         <label> <input type="radio" name="favorite" value="1" /> Sí </label>
       </div>
 
-      <label for="details">Detalles Tech:</label>
-      <textarea name="details" id="details" cols="30" rows="10"></textarea>
+      <label for="details-group">Detalles Tech:</label>
+      <div id="details-group">
+        <input type="text" name="details">
+      </div>
+      <button type="button" onclick="addDetail()">Añadir nuevo detalle</button>
 
-      <label for="icon">Seleccionar Icono:</label>
-      <label>
-        <input type="file" id="icon" name="icon" />
+      <label for="icon">Añadir Icono:</label>
+      <label id="icon">
+        <input type="text" name="icon" />
       </label>
 
       <input type="submit" value="Enviar" />
     </form>
+
+    <script src="/public/js/tech.js"></script>
   </body>
 </html>

@@ -11,6 +11,12 @@ const Project = model(
       type: String,
       required: true,
     },
+    tasks: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
     favorite: {
       type: Boolean,
       default: false,

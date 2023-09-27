@@ -6,7 +6,7 @@ const app = express();
 
 app.disable('x-powered-by');
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(require('morgan')('dev'));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 

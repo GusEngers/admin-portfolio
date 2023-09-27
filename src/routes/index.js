@@ -41,15 +41,14 @@ router
     }
   });
 
-const UpTech = upload.fields([{ name: 'icon', maxCount: 1 }]);
 router
   .route('/tech')
   .get((req, res) => {
     res.render('tech', { info: null });
   })
-  .post(UpTech, async (req, res) => {
+  .post(async (req, res) => {
     try {
-      const tech = await addTech({ ...req.body, icon: req.files['icon'][0] });
+      const tech = await addTech({ ...req.body });
       res.render('tech', { info: tech });
     } catch (error) {
       res.render('tech', { info: error.message });

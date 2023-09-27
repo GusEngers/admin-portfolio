@@ -12,13 +12,15 @@ const Tech = model(
       default: false,
     },
     icon: {
-      type: Schema.Types.Mixed,
-      required: true,
-    },
-    details: {
       type: String,
       required: true,
     },
+    details: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
   })
 );
 
