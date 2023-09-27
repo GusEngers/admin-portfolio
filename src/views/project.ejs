@@ -4,10 +4,23 @@
     [%- include('__components/head', {title: 'Añadir Proyecto'}) %]
   </head>
   <body>
+    [% if(info) { %]
+    <p>[%= info %]</p>
+    [% } %]
+
     <h1>Añadir nuevo proyecto</h1>
-    <form action="/add" method="post">
+    <form action="/project" method="post">
       <label for="name">Nombre Proyecto:</label>
       <input type="text" id="name" name="name" />
+
+      <label for="radio-favorite-group">Proyecto Destacado:</label>
+      <div id="radio-favorite-group">
+        <label>
+          <input type="radio" name="favorite" value="0" checked />
+          No
+        </label>
+        <label> <input type="radio" name="favorite" value="1" /> Sí </label>
+      </div>
 
       <label for="description">Descripción de Proyecto:</label>
       <textarea
@@ -17,19 +30,27 @@
         rows="10"
       ></textarea>
 
+      [% if(techs) { %]
       <label for="techs-group">Tecnologías usadas:</label>
       <div id="techs-group">
+        [% for(let tech of techs) { %]
         <label>
-          <input type="checkbox" id="react" name="techs" value="React" /> React
+          <input
+            type="checkbox"
+            id="[%= tech._id %]"
+            name="techs"
+            value="[%= tech._id %]"
+          />
+          [%= tech.name %]
         </label>
-        <label>
-          <input type="checkbox" id="express" name="techs" value="Express" />
-          Express
-        </label>
+        [% } %]
       </div>
+      [% } else { %]
+      <p>No hay Tecnologías disponibles todavía</p>
+      [% } %]
 
-      <label for="radio-group">Tipo de Proyecto:</label>
-      <div id="radio-group">
+      <label for="radio-type-group">Tipo de Proyecto:</label>
+      <div id="radio-type-group">
         <label>
           <input type="radio" name="type" value="Full-Stack" checked />
           Full-Stack
@@ -49,13 +70,16 @@
       <input type="url" id="deploy" name="deploy" />
       <label for="docs">Documentación del Proyecto:</label>
       <input type="url" id="docs" name="docs" />
-      <!-- <label for="imagen">Seleccionar imagen:</label>
-        <label class="custom-file-upload">
-            Subir imagen
-            <input type="file" id="imagen" name="imagen">
-        </label> -->
 
-      <br /><br />
+      <label for="avatar">Seleccionar Avatar:</label>
+      <label>
+        <input type="file" id="avatar" name="avatar" />
+      </label>
+
+      <label for="images">Seleccionar Avatar:</label>
+      <label>
+        <input type="file" id="images" name="images" multiple/>
+      </label>
 
       <input type="submit" value="Enviar" />
     </form>

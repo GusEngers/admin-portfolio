@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    [%- include('__components/head', {title: 'Añadir Tech'}) %]
+  </head>
+  <body>
+    [% if(info) { %]
+    <p>[%= info %]</p>
+    [% } %]
+
+    <h1>Añadir nuevoa tech</h1>
+    <form action="/tech" method="post">
+      <label for="name">Nombre Tech:</label>
+      <input type="text" id="name" name="name" />
+
+      <label for="radio-favorite-group">Tech Favorita:</label>
+      <div id="radio-favorite-group">
+        <label>
+          <input type="radio" name="favorite" value="0" checked />
+          No
+        </label>
+        <label> <input type="radio" name="favorite" value="1" /> Sí </label>
+      </div>
+
+      <label for="details">Detalles Tech:</label>
+      <input type="text" id="details" name="details" />
+
+      <label for="icon">Seleccionar Icono:</label>
+      <label>
+        <input type="file" id="icon" name="icon" />
+      </label>
+
+      <input type="submit" value="Enviar" />
+    </form>
+  </body>
+</html>
