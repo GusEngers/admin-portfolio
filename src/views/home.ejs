@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    [%- include('__components/head', {title: 'Añadir Proyecto'}) %]
+  </head>
+  <body>
+    <h1>Añadir nuevo proyecto</h1>
+    <form action="/add" method="post">
+      <label for="name">Nombre Proyecto:</label>
+      <input type="text" id="name" name="name" />
+
+      <label for="description">Descripción de Proyecto:</label>
+      <textarea
+        name="description"
+        id="description"
+        cols="30"
+        rows="10"
+      ></textarea>
+
+      <label for="techs-group">Tecnologías usadas:</label>
+      <div id="techs-group">
+        <label>
+          <input type="checkbox" id="react" name="techs" value="React" /> React
+        </label>
+        <label>
+          <input type="checkbox" id="express" name="techs" value="Express" />
+          Express
+        </label>
+      </div>
+
+      <label for="radio-group">Tipo de Proyecto:</label>
+      <div id="radio-group">
+        <label>
+          <input type="radio" name="type" value="Full-Stack" checked />
+          Full-Stack
+        </label>
+        <label>
+          <input type="radio" name="type" value="Back-End" /> Back-End
+        </label>
+        <label>
+          <input type="radio" name="type" value="Front-End" /> Front-End
+        </label>
+        <label> <input type="radio" name="type" value="Otro" /> Otro </label>
+      </div>
+
+      <label for="github">Repositorio del Proyecto:</label>
+      <input type="url" id="github" name="github" />
+      <label for="deploy">Deploy del Proyecto:</label>
+      <input type="url" id="deploy" name="deploy" />
+      <label for="docs">Documentación del Proyecto:</label>
+      <input type="url" id="docs" name="docs" />
+      <!-- <label for="imagen">Seleccionar imagen:</label>
+        <label class="custom-file-upload">
+            Subir imagen
+            <input type="file" id="imagen" name="imagen">
+        </label> -->
+
+      <br /><br />
+
+      <input type="submit" value="Enviar" />
+    </form>
+  </body>
+</html>
