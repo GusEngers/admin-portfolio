@@ -30,7 +30,7 @@
         rows="10"
       ></textarea>
 
-      [% if(techs) { %]
+      [% if(!!techs.length) { %]
       <label for="techs-group">Tecnologías usadas:</label>
       <div id="techs-group">
         [% for(let tech of techs) { %]
@@ -61,7 +61,7 @@
         <label>
           <input type="radio" name="type" value="Front-End" /> Front-End
         </label>
-        <label> <input type="radio" name="type" value="Otro" /> Otro </label>
+        <label> <input type="radio" name="type" value="Otros" /> Otros </label>
       </div>
 
       <label for="github">Repositorio del Proyecto:</label>
@@ -76,7 +76,7 @@
         <input type="file" id="avatar" name="avatar" />
       </label>
 
-      <label for="images">Seleccionar Avatar:</label>
+      <label for="images">Seleccionar Imágenes:</label>
       <label>
         <input type="file" id="images" name="images" multiple/>
       </label>
