@@ -9,7 +9,7 @@
     [% } %]
 
     <h1>Añadir nuevo proyecto</h1>
-    <form action="/project" method="post">
+    <form action="/project" method="post" enctype="multipart/form-data">
       <label for="name">Nombre Proyecto:</label>
       <input type="text" id="name" name="name" />
 
@@ -94,5 +94,7 @@
       <input type="submit" value="Enviar" disabled />
       [% } %]
     </form>
+
+    <script src="/public/js/project.js"></script>
   </body>
 </html>
