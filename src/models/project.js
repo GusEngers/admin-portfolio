@@ -32,7 +32,8 @@ const Project = model(
     ],
     type: {
       type: String,
-      enum: ['Full-Stack', 'Back-End', 'Front-End', 'Otros'],
+      lowercase: true,
+      enum: ['full-stack', 'back-end', 'front-end', 'otros'],
     },
     github: {
       type: String,
