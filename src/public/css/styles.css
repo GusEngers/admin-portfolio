@@ -15,7 +15,7 @@
   --text-size-title: 3rem;
   --text-size-subtitle: 2.5rem;
   --text-size-normal: 2rem;
-  --text-size-small: 1rem;
+  --text-size-small: 1.25rem;
 }
 
 * {
@@ -29,6 +29,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: var(--text-color1);
 }
 
 h1 {
@@ -104,6 +105,79 @@ h1 {
   border-color: var(--text-color1);
 }
 
+/* Página Lista de Proyectos */
+#projects-main {
+  width: 100%;
+  min-width: 100%;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.table-container {
+  margin: 0 auto;
+  max-width: 1300px;
+  min-width: 600px;
+  display: block;
+  overflow-x: auto;
+  font-size: var(--text-size-small);
+}
+
+.table-container > table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+  border: 2px solid var(--text-color1)
+}
+
+.table-container td, .table-container th, .table-container caption {
+  text-wrap: nowrap;
+  width: auto;
+  padding: 0.5rem;
+}
+
+.table-container td {
+  border-top: 1px solid var(--text-color1);
+  border-bottom: 1px solid var(--text-color1);
+  border-left: 2px solid var(--text-color1);
+  border-right: 2px solid var(--text-color1);
+}
+
+.table-container th, .table-container caption {
+  border: 2px solid var(--text-color1);
+  background-color: var(--bg-color1);
+  color: var(--text-color2);
+}
+
+.cell-type {
+  text-transform: capitalize;
+}
+
+.btn-edit, .btn-delete {
+  text-transform: uppercase;
+  font-size: 1rem;
+  padding: 0.3rem;
+  color: var(--text-color1);
+  vertical-align: middle;
+  border-radius: 5px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  margin: 0;
+  display: inline-block;
+}
+
+.btn-edit {
+  background-color: var(--success-color);
+}
+
+.btn-delete {
+  background-color: var(--error-color);
+}
+
+.btn-edit:hover, .btn-delete:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
 
 /* Media Querys */
 @media (max-width: 600px) {

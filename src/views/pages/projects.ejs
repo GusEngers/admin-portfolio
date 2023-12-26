@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('../utils/head', { title: "Proyectos | Admin-Portfolio"}) %>
+  </head>
+  <body>
+    <%# Barra de Navegación %>
+    <%- include('../components/navbar') %>
+
+    <%# Cuerpo de la Aplicación %>
+    <main id="projects-main">
+      <h1>Proyectos</h1>
+      <% if (!projects.length) { %>
+       <p>No hay proyectos</p>
+      <% } else { %>
+        <div class="table-container">
+          <table>
+            <caption>Total de Proyectos: <%= projects.length %></caption>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Operaciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% projects.forEach((project) => { %>
+                <tr>
+                  <td><%= project._id %></td>
+                  <td><%= project.name %></td>
+                  <td class="cell-type"><%= project.type %></td>
+                  <td class="cell-buttons">
+                    <a class="btn-edit" href="/proyecto/<%= project._id %>/editar">Editar</a>
+                    <a class="btn-delete" href="/proyecto/<%= project._id %>/eliminar">Eliminar</a>
+                  </td>
+                </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+      <% } %>
+    </main>
+  </body>
+</html>

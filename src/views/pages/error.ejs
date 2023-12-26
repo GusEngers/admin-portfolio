@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('../utils/head', { title: "Error | Admin-Portfolio"}) %>
+  </head>
+  <body>
+    <%# Barra de Navegación %>
+    <%- include('../components/navbar') %>
+
+    <%# Cuerpo de la Aplicación %>
+    <main id="error-main">
+      <h1>¡Lo siento!</h1>
+
+      <% if (notFound) { %>
+        <p>404 - Página no encontrada</p>
+      <% } else { %>
+        <p><%= error %></p>
+      <% } %>
+      
+      <a href="/">Inicio</a>
+    </main>
+  </body>
+</html>

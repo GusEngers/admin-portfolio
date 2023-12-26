@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const multer = require('multer');
 const storage = require('../config/storage');
+const { getProjects } = require('../controllers/projects');
 
 // const addProject = require('../controllers/add-project');
 // const getTechs = require('../controllers/get-techs');
@@ -13,6 +14,14 @@ router.get('/', (req, res) => {
   res.render('pages/home');
 });
 
+router.get('/proyectos', async (req, res) => {
+  try {
+    const projects = await getProjects();
+    res.render('pages/projects', { projects });
+  } catch (error) {
+    res.render('pages/error', { notFound: false, error: error.message });
+  }
+});
 /*
 const UpProject = upload.fields([
   { name: 'avatar', maxCount: 1 },
