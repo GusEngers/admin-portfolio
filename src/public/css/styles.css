@@ -3,8 +3,8 @@
 :root {
   --bg-color1: #000;
   --bg-color1-2: #fff;
-  /* --bg-color2: #001; */
-  --bg-color2: #fff;
+  --bg-color2: #001;
+  /* --bg-color2: #fff; */
   --bg-color2-2: #9d9dc2;
   --text-color1: #fff;
   --text-color2: #fbff00;
@@ -29,6 +29,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1 {
+  font-size: var(--text-size-title);
+  color: var(--text-color2);
+  text-transform: uppercase;
+  text-wrap: wrap;
 }
 
 /* Barra de Navagación */
@@ -58,11 +65,63 @@ body {
   cursor: pointer;
 }
 
+/* Página Principal */
+
+#home-main {
+  width: 70%;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  min-height: calc(100vh - 6.5rem);
+}
+
+#home-list {
+  margin: 0;
+  list-style: none;
+  padding: 0;
+  display: block;
+}
+
+#home-list li {
+  width: 100%;
+}
+
+.home-link {
+  color: var(--text-color2);
+  display: block;
+  padding: 0.5rem 0;
+  margin: 0.5rem auto;
+  width: 70%;
+  text-decoration: none;
+  border: 3px solid var(--text-color2);
+  border-radius: 0.5rem;
+  font-size: var(--text-size-normal);
+}
+
+.home-link:hover {
+  cursor: pointer;
+  color: var(--text-color1);
+  border-color: var(--text-color1);
+}
+
+
 /* Media Querys */
 @media (max-width: 600px) {
   #header a {
     display: block;
     width: max-content;
     margin: 0 auto;
+  }
+
+  #home-main {
+    width: 100%;
+  }
+
+  #home-main b {
+    display: none;
+  }
+
+  .home-link {
+    width: 100%;
   }
 }
