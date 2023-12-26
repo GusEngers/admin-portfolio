@@ -1,0 +1,68 @@
+/* Configuraciones Globales */
+
+:root {
+  --bg-color1: #000;
+  --bg-color1-2: #fff;
+  /* --bg-color2: #001; */
+  --bg-color2: #fff;
+  --bg-color2-2: #9d9dc2;
+  --text-color1: #fff;
+  --text-color2: #fbff00;
+  --error-color: #c90000;
+  --success-color: #03c903;
+  --info-color: #0084ff;
+  --text-size-big: 4rem;
+  --text-size-title: 3rem;
+  --text-size-subtitle: 2.5rem;
+  --text-size-normal: 2rem;
+  --text-size-small: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color2);
+  width: 100%;
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* Barra de Navagación */
+
+#header {
+  background-color: var(--bg-color1);
+  width: 100%;
+  padding: 0.5rem 0;
+  text-align: center;
+}
+
+#header nav {
+  margin: 0.5rem;
+}
+
+#header a {
+  font-size: var(--text-size-normal);
+  color: var(--text-color1);
+  margin: 0 0.5rem;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+#header a:hover {
+  color: var(--text-color2);
+  border-bottom: 2px solid var(--text-color2);
+  cursor: pointer;
+}
+
+/* Media Querys */
+@media (max-width: 600px) {
+  #header a {
+    display: block;
+    width: max-content;
+    margin: 0 auto;
+  }
+}

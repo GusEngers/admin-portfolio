@@ -2,17 +2,18 @@ const router = require('express').Router();
 const multer = require('multer');
 const storage = require('../config/storage');
 
-const addProject = require('../controllers/add-project');
-const getTechs = require('../controllers/get-techs');
-const addTech = require('../controllers/add-tech');
-const getAll = require('../controllers/get-all');
+// const addProject = require('../controllers/add-project');
+// const getTechs = require('../controllers/get-techs');
+// const addTech = require('../controllers/add-tech');
+// const getAll = require('../controllers/get-all');
 
-const upload = multer({ storage });
+// const upload = multer({ storage });
 
 router.get('/', (req, res) => {
-  res.redirect('/project');
+  res.render('pages/home');
 });
 
+/*
 const UpProject = upload.fields([
   { name: 'avatar', maxCount: 1 },
   { name: 'images', maxCount: 8 },
@@ -59,5 +60,5 @@ router.get('/all', async (req, res) => {
   const all = await getAll();
   res.json(all);
 });
-
+*/
 module.exports = router;
