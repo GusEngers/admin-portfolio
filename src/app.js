@@ -14,8 +14,5 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
 app.use('/', router);
-app.use((req, res) => {
-  res.render("pages/error", {notFound: true})
-})
 
 module.exports = app;

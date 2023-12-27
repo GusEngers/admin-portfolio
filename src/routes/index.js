@@ -1,13 +1,6 @@
 const router = require('express').Router();
-const multer = require('multer');
-const storage = require('../config/storage');
-const { getProjects } = require('../controllers/projects');
-const { getTechs } = require('../controllers/techs');
-
-// const addProject = require('../controllers/add-project');
-// const getTechs = require('../controllers/get-techs');
-// const addTech = require('../controllers/add-tech');
-// const getAll = require('../controllers/get-all');
+const projects = require('./projects');
+const techs = require('./techs');
 
 // const upload = multer({ storage });
 
@@ -15,24 +8,13 @@ router.get('/', (req, res) => {
   res.render('pages/home');
 });
 
-router.get('/proyectos', async (req, res) => {
-  try {
-    const projects = await getProjects();
-    res.render('pages/list', { type: 'Proyectos', data: projects });
-  } catch (error) {
-    res.render('pages/error', { notFound: false, error: error.message });
-  }
+router.use('/proyectos', projects);
+router.use('/tecnologias', techs);
+
+router.use((req, res) => {
+  res.render('pages/error', { notFound: true });
 });
 
-router.get('/tecnologias', async (req, res) => {
-  try {
-    const techs = await getTechs();
-    res.render('pages/list', { type: 'Tecnologías', data: techs });
-  } catch (error) {
-    console.log(error)
-    res.render('pages/error', { notFound: false, error: error.message });
-  }
-});
 /*
 const UpProject = upload.fields([
   { name: 'avatar', maxCount: 1 },
