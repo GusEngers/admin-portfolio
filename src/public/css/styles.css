@@ -3,12 +3,12 @@
 :root {
   --bg-color1: #000;
   --bg-color1-2: #fff;
+  --bg-color1-3: #ffffff2f;
   --bg-color2: #001;
-  /* --bg-color2: #fff; */
   --bg-color2-2: #9d9dc2;
   --text-color1: #fff;
   --text-color2: #fbff00;
-  --error-color: #c90000;
+  --error-color: #ff0000;
   --success-color: #03c903;
   --info-color: #0084ff;
   --text-size-big: 4rem;
@@ -73,6 +73,26 @@ h1 {
 .btn-submit:disabled:hover {
   cursor: default;
   transform: none;
+}
+
+#info-message, #error-message {
+  font-size: var(--text-size-small);
+  border-radius: 5px;
+  text-wrap: wrap;
+  text-align: center;
+  padding: 1rem 0;
+  width: 100%;
+  background-color: var(--bg-color1-3);
+}
+
+#info-message {
+  color: var(--success-color);
+  border: 2px solid var(--success-color);
+}
+
+#error-message {
+  color: var(--error-color);
+  border: 2px solid var(--error-color);
 }
 
 /* Página de Error */
@@ -160,7 +180,7 @@ h1 {
 }
 
 .table-container {
-  margin: 0 auto;
+  margin: 0 auto 2rem auto;
   max-width: 1300px;
   min-width: 600px;
   display: block;
@@ -249,6 +269,7 @@ h1 {
 }
 
 /* Formulario de Nueva Tecnología */
+
 #tech-form {
   font-size: var(--text-size-small);
   text-align: left;
@@ -261,10 +282,25 @@ h1 {
   margin: 0.35rem 0;
 }
 
+#tech-form .radio-label {
+  width: max-content;
+  display: block;
+}
+
+#tech-form .radio-label:hover,
+#tech-form input[type=radio]:hover {
+  cursor: pointer;
+}
+
 #tech-form input[type=text] {
   display: inline-block;
   width: 100%;
   font-size: 1.5rem;
+}
+
+#tech-form input[type=text]::placeholder {
+  font-size: var(--text-size-small);
+  font-style: italic;
 }
 
 #details-group input {

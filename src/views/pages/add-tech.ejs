@@ -26,58 +26,21 @@
         </fieldset>
         <fieldset>
           <legend>¿Tecnología destacada?</legend>
-          <label for="no-favorite">
+          <label for="no-favorite" class="radio-label">
             <input type="radio" name="favorite" value="0" id="no-favorite" checked> NO</label>
-          <label for="yes-favorite">
+          <label for="yes-favorite" class="radio-label">
             <input type="radio" name="favorite" value="1" id="yes-favorite"> SI</label>
         </fieldset>
         <fieldset>
           <legend>Detalles sobre la Tecnología</legend>
           <div id="details-group">
-            <input id="detail-0" placeholder="Desarrollar componentes..." type="text" name="details" minlength="10">
+            <input id="detail-0" placeholder="Desarrollar componentes..." type="text" name="details" minlength="5">
           </div>
           <button class="btn-edit" type="button" id="detail-button">Otro Detalle</button>
         </fieldset>
         <input class="btn-submit" type="submit" value="AÑADIR">
       </form>
     </main>
-    <script>
-      const button = document.getElementById('detail-button');
-      button.setAttribute('disabled', true);
-
-      let input = document.getElementById('detail-0');
-      let count = 1;
-
-      function inputListener() {
-        input.addEventListener('input', (event) => {
-          let value = event.target.value
-          if(!value.length || value.length < 10) {
-            button.setAttribute('disabled', true);
-          } else {
-            button.removeAttribute('disabled');
-          }
-        })
-      }
-
-      input.addEventListener('focus', () => {
-        inputListener();
-      });
-
-      button.onclick = function () {
-        const group = document.getElementById('details-group');
-        const detail =  document.createElement('input');
-        detail.type = 'text';
-        detail.name = 'details';
-        detail.id = 'detail-' + count;
-        detail.placeholder = 'Desarrollar componentes...';
-        detail.minLength = 10;
-        group.appendChild(detail);
-        
-        count++;
-        button.setAttribute('disabled', true);
-        input = document.getElementById(detail.id);
-        inputListener();
-      }
-    </script>
+    <script src="/public/js/add-tech.js"></script>
   </body>
 </html>
