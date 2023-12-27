@@ -72,8 +72,8 @@
         </fieldset>
         <fieldset>
           <legend>Imágenes</legend>
-          <label for="avatar">Perfil: <input type="file" name="avatar" id="avatar" required></label>
-          <label for="images">Adicionales: <input type="file" name="images" id="images" multiple></label>
+          <label for="avatar">Perfil: <input accept="image/*" type="file" name="avatar" id="avatar" required></label>
+          <label for="images">Adicionales: <input accept="image/*" type="file" name="images" id="images" multiple></label>
         </fieldset>
         <% if (!techs.length) { %>
           <input class="btn-submit" type="submit" value="AÑADIR" disabled />
