@@ -287,23 +287,39 @@ h1 {
   display: block;
 }
 
-#tech-form .radio-label:hover,
-#tech-form input[type=radio]:hover {
-  cursor: pointer;
+#tech-form textarea {
+  resize: vertical;
 }
 
-#tech-form input[type=text] {
+#tech-form .checkbox-label {
+  width: 45%;
+}
+
+#tech-form .radio-label:hover,
+#tech-form .checkbox-label:hover,
+#tech-form input[type=radio]:hover,
+#tech-form input[type=checkbox]:hover {
+  cursor: pointer;
+  color: var(--text-color2);
+}
+
+#tech-form input[type=text],
+#tech-form input[type=url],
+#tech-form textarea {
   display: inline-block;
   width: 100%;
   font-size: 1.5rem;
 }
 
-#tech-form input[type=text]::placeholder {
+#tech-form input[type=text]::placeholder,
+#tech-form input[type=url]::placeholder,
+#tech-form textarea::placeholder {
   font-size: var(--text-size-small);
   font-style: italic;
 }
 
-#details-group input {
+#details-group input,
+#tasks-group input {
   margin-top: 0.15rem;
   margin-bottom: 0.15rem;
 }

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('../utils/head', { title: "Nuevo Proyecto | Admin-Portfolio"}) %>
+  </head>
+  <body>
+    <%# Barra de Navegación %>
+    <%- include('../components/navbar') %>
+
+    <%# Cuerpo de la Aplicación %>
+    <main id="new-main">
+      <h1>Nuevo proyecto</h1>
+
+      <% if (info) { %>
+        <p id="info-message"><%= info %></p>
+      <% } %>
+      <% if (error) { %>
+        <p id="error-message"><%= error %></p>
+      <% } %>
+
+      <form id="tech-form" action="/proyectos/nuevo" method="post" enctype="multipart/form-data">
+        <fieldset>
+          <legend>Información Principal</legend>
+          <label for="name">Nombre: <input placeholder="Mi Aplicación" type="text" name="name" id="name" minlength="3" required></label>
+          <label for="description">Descripción: <textarea name="description" id="description" rows="5" minlength="50" placeholder="Aplicación que realiza..." required></textarea></label>
+        </fieldset>
+        <fieldset>
+          <legend>¿Proyecto destacado?</legend>
+          <label for="no-favorite" class="radio-label">
+            <input type="radio" name="favorite" value="0" id="no-favorite" checked> NO</label>
+          <label for="yes-favorite" class="radio-label">
+            <input type="radio" name="favorite" value="1" id="yes-favorite"> SI</label>
+        </fieldset>
+        <fieldset>
+          <legend>Características del Proyecto</legend>
+          <div id="tasks-group">
+            <input id="task-0" placeholder="Obtiene datos de una API..." type="text" name="tasks" minlength="5">
+          </div>
+          <button class="btn-edit" type="button" id="detail-button">Otra Característica</button>
+        </fieldset>
+        <fieldset>
+          <legend>Tecnologías usadas</legend>
+          <% if (!techs.length) { %>
+            <p id="error-message">Debe añadir Tecnologías primero</p>
+          <% } else { %>
+            <% techs.forEach((tech) => { %>
+              <label for="<%= tech._id %>" class="checkbox-label">
+                <input
+                  type="checkbox"
+                  name="techs"
+                  id="<%= tech._id %>"
+                  value="<%= tech._id %>"> <%= tech.name %></label>
+            <% }) %>
+          <% } %>
+        </fieldset>
+        <fieldset>
+          <legend>Tipo de Proyecto</legend>
+          <label for="full-stack-radio" class="radio-label">
+            <input type="radio" name="type" value="full-stack" id="full-stack-radio" checked> Full-Stack</label>
+          <label for="back-end-radio" class="radio-label">
+            <input type="radio" name="type" value="back-end" id="back-end-radio"> Back-End</label>
+          <label for="front-end-radio" class="radio-label">
+            <input type="radio" name="type" value="front-end" id="front-end-radio"> Front-End</label>
+          <label for="otros-radio" class="radio-label">
+            <input type="radio" name="type" value="otros" id="otros-radio"> Otro</label>
+        </fieldset>
+        <fieldset>
+          <legend>Accesos</legend>
+          <label for="github">Repositorio: <input type="url" placeholder="https://github.com/usuario/repositorio" name="github" id="github" required></label>
+          <label for="deploy">Sitio Web: <input type="url" placeholder="https://misitioweb.com" name="deploy" id="deploy"></label>
+          <label for="docs">Documentación: <input type="url" placeholder="https://documentacion.com" name="docs" id="docs"></label>
+        </fieldset>
+        <fieldset>
+          <legend>Imágenes</legend>
+          <label for="avatar">Perfil: <input type="file" name="avatar" id="avatar" required></label>
+          <label for="images">Adicionales: <input type="file" name="images" id="images" multiple></label>
+        </fieldset>
+        <% if (!techs.length) { %>
+          <input class="btn-submit" type="submit" value="AÑADIR" disabled />
+        <% } else { %>
+          <input class="btn-submit" type="submit" value="AÑADIR" />
+        <% } %>
+      </form>
+    </main>
+    <script src="/public/js/add-project.js"></script>
+  </body>
+</html>
