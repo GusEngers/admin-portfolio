@@ -11,10 +11,6 @@
     <main id="new-main">
       <h1>Editar tecnología</h1>
 
-      <% if (error) { %>
-        <p id="error-message"><%= error %></p>
-      <% } %>
-
       <form id="tech-form" action="/tecnologias/<%= tech._id %>/editar" method="post">
         <fieldset>
           <legend>Información Principal</legend>
@@ -23,7 +19,7 @@
         </fieldset>
         <fieldset>
           <legend>¿Tecnología destacada?</legend>
-          <label for="no-favorite">
+          <label for="no-favorite" class="radio-label">
             <% if (!tech.favorite) { %>
               <input
                 type="radio"
@@ -34,14 +30,14 @@
             <% } else { %>
               <input type="radio" name="favorite" value="0" id="no-favorite"> NO</label>
             <% } %>
-          <label for="yes-favorite">
+          <label for="yes-favorite" class="radio-label">
             <% if (tech.favorite) { %>
               <input
                 type="radio"
                 name="favorite"
                 value="1"
                 id="yes-favorite"
-                checked> NO</label>
+                checked> SI</label>
             <% } else { %>
               <input type="radio" name="favorite" value="1" id="yes-favorite"> SI</label>
             <% } %>
@@ -68,48 +64,6 @@
         <input class="btn-submit" type="submit" value="EDITAR">
       </form>
     </main>
-    <script>
-      const button = document.getElementById('detail-button');
-
-      let inputs = document.getElementsByName('details');
-      let input = inputs[inputs.length - 1];
-
-      if(!input.getAttribute('value').length) {
-        button.setAttribute('disabled', true);
-      }
-
-      let count = input.length;
-
-      function inputListener() {
-        input.addEventListener('input', (event) => {
-          let value = event.target.value
-          if(!value.length || value.length < 5) {
-            button.setAttribute('disabled', true);
-          } else {
-            button.removeAttribute('disabled');
-          }
-        })
-      }
-
-      input.addEventListener('focus', () => {
-        inputListener();
-      });
-
-      button.onclick = function () {
-        const group = document.getElementById('details-group');
-        const detail =  document.createElement('input');
-        detail.type = 'text';
-        detail.name = 'details';
-        detail.id = 'detail-' + count;
-        detail.placeholder = 'Desarrollar componentes...';
-        detail.minLength = 10;
-        group.appendChild(detail);
-        
-        count++;
-        button.setAttribute('disabled', true);
-        input = document.getElementById(detail.id);
-        inputListener();
-      }
-    </script>
+    <script src="/public/js/edit-tech.js"></script>
   </body>
 </html>
