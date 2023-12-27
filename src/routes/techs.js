@@ -1,9 +1,5 @@
 const techs = require('express').Router();
-const multer = require('multer');
-const storage = require('../config/storage');
 const { getTechs } = require('../controllers/techs');
-
-const upload = multer({ storage });
 
 techs.get('/', async (req, res) => {
   try {
@@ -13,5 +9,15 @@ techs.get('/', async (req, res) => {
     res.render('pages/error', { notFound: false, error: error.message });
   }
 });
+
+techs
+  .route('/nuevo')
+  .get((req, res) => {
+    res.render('pages/add-tech', { info: false, error: false });
+  })
+  .post(async (req, res) => {
+    console.log(req.body);
+    res.render('pages/add-tech', { info: 'Tecología Añadida', error: false });
+  });
 
 module.exports = techs;

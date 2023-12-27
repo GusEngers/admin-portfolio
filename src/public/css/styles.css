@@ -39,12 +39,40 @@ h1 {
   text-wrap: wrap;
 }
 
-#home-main, #error-main {
+#home-main,
+#error-main,
+#new-main {
   width: 70%;
   max-width: 700px;
   margin: 0 auto;
   text-align: center;
   min-height: calc(100vh - 6.5rem);
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: var(--success-color);
+  font-size: var(--text-size-normal);
+  border: 0;
+  border-radius: 5px;
+  color: var(--text-color1);
+  padding: 0.35rem 0;
+  vertical-align: middle;
+}
+
+.btn-submit:hover {
+  cursor: pointer;
+  transform: scaleY(1.1) scaleX(1.01);
+  transition: 0.3s;
+}
+
+.btn-submit:disabled {
+  background-color: var(--bg-color2-2);
+}
+
+.btn-submit:disabled:hover {
+  cursor: default;
+  transform: none;
 }
 
 /* Página de Error */
@@ -59,7 +87,8 @@ h1 {
   font-size: var(--text-size-normal);
 }
 
-#not-found-error, #normal-error {
+#not-found-error,
+#normal-error {
   color: var(--info-color);
 }
 
@@ -143,10 +172,12 @@ h1 {
   width: 100%;
   border-spacing: 0;
   border-collapse: collapse;
-  border: 2px solid var(--text-color1)
+  border: 2px solid var(--text-color1);
 }
 
-.table-container td, .table-container th, .table-container caption {
+.table-container td,
+.table-container th,
+.table-container caption {
   text-wrap: nowrap;
   width: auto;
   padding: 0.5rem;
@@ -159,7 +190,8 @@ h1 {
   border-right: 2px solid var(--text-color1);
 }
 
-.table-container th, .table-container caption {
+.table-container th,
+.table-container caption {
   border: 2px solid var(--text-color1);
   background-color: var(--bg-color1);
   color: var(--text-color2);
@@ -169,7 +201,8 @@ h1 {
   text-transform: capitalize;
 }
 
-.btn-edit, .btn-delete {
+.btn-edit,
+.btn-delete {
   text-transform: uppercase;
   font-size: 1rem;
   padding: 0.3rem;
@@ -190,10 +223,20 @@ h1 {
   background-color: var(--error-color);
 }
 
-.btn-edit:hover, .btn-delete:hover {
+.btn-edit:hover,
+.btn-delete:hover {
   cursor: pointer;
   transform: scale(1.1);
   transition: 0.3s;
+}
+
+.btn-edit:disabled {
+  background-color: var(--bg-color2-2);
+}
+
+.btn-edit:disabled:hover {
+  cursor: default;
+  transform: none;
 }
 
 #not-data-list {
@@ -205,7 +248,42 @@ h1 {
   width: 40%;
 }
 
+/* Formulario de Nueva Tecnología */
+#tech-form {
+  font-size: var(--text-size-small);
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+#tech-form label {
+  display: inline-block;
+  width: 100%;
+  margin: 0.35rem 0;
+}
+
+#tech-form input[type=text] {
+  display: inline-block;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+#details-group input {
+  margin-top: 0.15rem;
+  margin-bottom: 0.15rem;
+}
+
+#tech-form .btn-edit {
+  margin: 0.15rem auto;
+  display: block;
+}
+
+#tech-form fieldset {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
 /* Media Querys */
+
 @media (max-width: 600px) {
   #header a {
     display: block;
@@ -213,7 +291,9 @@ h1 {
     margin: 0 auto;
   }
 
-  #home-main, #error-main {
+  #home-main,
+  #error-main,
+  #new-main {
     width: 100%;
   }
 
@@ -221,7 +301,8 @@ h1 {
     display: none;
   }
 
-  .home-link, .list-link {
+  .home-link,
+  .list-link {
     width: 100%;
   }
 }
