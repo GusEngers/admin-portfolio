@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('../utils/head', { title: type + " | Admin-Portfolio"}) %>
+  </head>
+  <body>
+    <%# Barra de Navegación %>
+    <%- include('../components/navbar') %>
+
+    <%# Cuerpo de la Aplicación %>
+    <main id="list-main">
+      <% if (type === "Proyectos") { %>
+       
+        <h1>Proyectos</h1>
+        <% if (!data.length) { %>
+         <h2 id="not-data-list">No hay proyectos</h2>
+         <a class="home-link list-link" href="/proyectos/nuevo">Añadir Proyecto</a>
+        <% } else { %>
+          <div class="table-container">
+            <table>
+              <caption>Total de Proyectos: <%= data.length %></caption>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Tipo</th>
+                  <th>Operaciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% data.forEach((project) => { %>
+                  <tr>
+                    <td><%= project._id %></td>
+                    <td><%= project.name %></td>
+                    <td class="cell-type"><%= project.type %></td>
+                    <td class="cell-buttons">
+                      <a class="btn-edit" href="/proyecto/<%= project._id %>/editar">Editar</a>
+                      <a class="btn-delete" href="/proyecto/<%= project._id %>/eliminar">Eliminar</a>
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        <% } %>
+
+      <% } else { %>
+      
+        <h1>Tecnologías</h1>
+        <% if (!data.length) { %>
+         <h2 id="not-data-list">No hay tecnologías</h2>
+         <a class="home-link list-link" href="/tecnologias/nuevo">Añadir Tecnología</a>
+        <% } else { %>
+          <div class="table-container">
+            <table>
+              <caption>Total de Tecnologías: <%= data.length %></caption>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Icono</th>
+                  <th>Operaciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% data.forEach((tech) => { %>
+                  <tr>
+                    <td><%= tech._id %></td>
+                    <td><%= tech.name %></td>
+                    <td><%= tech.icon %></td>
+                    <td class="cell-buttons">
+                      <a class="btn-edit" href="/tecnologia/<%= tech._id %>/editar">Editar</a>
+                      <a class="btn-delete" href="/tecnologia/<%= tech._id %>/eliminar">Eliminar</a>
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+          <% } %>
+      <% } %>
+    </main>
+  </body>
+</html>

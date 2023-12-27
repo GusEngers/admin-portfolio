@@ -5,7 +5,7 @@ module.exports = {
     const projects = await Project.find({})
       .lean()
       .catch((err) => {
-        throw err;
+        throw new Error(err.message);
       });
     return projects;
   },

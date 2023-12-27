@@ -39,6 +39,30 @@ h1 {
   text-wrap: wrap;
 }
 
+#home-main, #error-main {
+  width: 70%;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  min-height: calc(100vh - 6.5rem);
+}
+
+/* Página de Error */
+
+#error-main b {
+  font-size: var(--text-size-big);
+  color: var(--error-color);
+}
+
+#error-main {
+  color: var(--text-color1);
+  font-size: var(--text-size-normal);
+}
+
+#not-found-error, #normal-error {
+  color: var(--info-color);
+}
+
 /* Barra de Navagación */
 
 #header {
@@ -67,14 +91,6 @@ h1 {
 }
 
 /* Página Principal */
-
-#home-main {
-  width: 70%;
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-  min-height: calc(100vh - 6.5rem);
-}
 
 #home-list {
   margin: 0;
@@ -105,8 +121,9 @@ h1 {
   border-color: var(--text-color1);
 }
 
-/* Página Lista de Proyectos */
-#projects-main {
+/* Página Lista de Proyectos y Tecnologías */
+
+#list-main {
   width: 100%;
   min-width: 100%;
   text-align: center;
@@ -179,6 +196,15 @@ h1 {
   transition: 0.3s;
 }
 
+#not-data-list {
+  font-size: var(--text-size-subtitle);
+  text-transform: uppercase;
+}
+
+.list-link {
+  width: 40%;
+}
+
 /* Media Querys */
 @media (max-width: 600px) {
   #header a {
@@ -187,7 +213,7 @@ h1 {
     margin: 0 auto;
   }
 
-  #home-main {
+  #home-main, #error-main {
     width: 100%;
   }
 
@@ -195,7 +221,7 @@ h1 {
     display: none;
   }
 
-  .home-link {
+  .home-link, .list-link {
     width: 100%;
   }
 }

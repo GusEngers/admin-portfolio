@@ -12,12 +12,12 @@
       <h1>¡Lo siento!</h1>
 
       <% if (notFound) { %>
-        <p>404 - Página no encontrada</p>
+        <p id="not-found-error"><b>404</b> Página no encontrada</p>
       <% } else { %>
-        <p><%= error %></p>
+        <p id="normal-error"><%= error %></p>
       <% } %>
       
-      <a href="/">Inicio</a>
+      <a class="home-link" href="/">Inicio</a>
     </main>
   </body>
 </html>

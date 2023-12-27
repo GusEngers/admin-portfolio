@@ -2,6 +2,7 @@ const router = require('express').Router();
 const multer = require('multer');
 const storage = require('../config/storage');
 const { getProjects } = require('../controllers/projects');
+const { getTechs } = require('../controllers/techs');
 
 // const addProject = require('../controllers/add-project');
 // const getTechs = require('../controllers/get-techs');
@@ -17,8 +18,18 @@ router.get('/', (req, res) => {
 router.get('/proyectos', async (req, res) => {
   try {
     const projects = await getProjects();
-    res.render('pages/projects', { projects });
+    res.render('pages/list', { type: 'Proyectos', data: projects });
   } catch (error) {
+    res.render('pages/error', { notFound: false, error: error.message });
+  }
+});
+
+router.get('/tecnologias', async (req, res) => {
+  try {
+    const techs = await getTechs();
+    res.render('pages/list', { type: 'Tecnologías', data: techs });
+  } catch (error) {
+    console.log(error)
     res.render('pages/error', { notFound: false, error: error.message });
   }
 });
