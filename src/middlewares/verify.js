@@ -36,6 +36,9 @@ module.exports = {
         tasks.push(req.body.tasks[i]);
       }
     }
+    if (!tasks.length) {
+      return next(new Error('El proyecto debe tener como mínimo una caracteristica'));
+    }
     req.body.tasks = tasks;
     next();
   },

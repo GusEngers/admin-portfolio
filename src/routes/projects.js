@@ -1,10 +1,9 @@
 const projects = require('express').Router();
 const upload = require('../config/storage');
-const { getProjects, addProject } = require('../controllers/projects');
+const { getProjects, addProject, getProject, updateProject, deleteProject } = require('../controllers/projects');
 const { getTechs } = require('../controllers/techs');
-const { handleNewProject } = require('../middlewares/handle-error');
+const { handleNewProject, handleEditProject } = require('../middlewares/handle-error');
 const { verifyId, verifyBodyProject } = require('../middlewares/verify');
-const Project = require('../models/project');
 
 const UpProject = upload.fields([
   { name: 'avatar', maxCount: 1 },
@@ -46,9 +45,56 @@ projects
   );
 
 projects.use('/:id', verifyId);
-projects.get('/:id/eliminar', async (req, res) => {
-  await Project.findByIdAndDelete(req.params.id);
-  res.redirect('/proyectos');
-});
+projects
+  .route('/:id/editar')
+  .get(async (req, res) => {
+    try {
+      const [project, techs] = await Promise.all([getProject(req.params.id), getTechs()]);
+      if (project === null) {
+        throw new Error('Proyecto no encontrado');
+      }
+      res.render('pages/edit-project', { error: false, project, techs });
+    } catch (error) {
+      res.render('pages/error', { notFound: false, error: error.message });
+    }
+  })
+  .post(
+    verifyBodyProject,
+    async (req, res) => {
+      try {
+        await updateProject(req.params.id, req.body);
+        res.redirect('/proyectos');
+      } catch (error) {
+        next(error);
+      }
+    },
+    handleEditProject
+  );
+
+projects
+  .route('/:id/eliminar')
+  .get(async (req, res) => {
+    try {
+      const project = await getProject(req.params.id);
+      if (!project) {
+        throw new Error('Proyecto no encontrado');
+      }
+      res.render('pages/delete-project', { error: false, project });
+    } catch (error) {
+      res.render('pages/error', { notFound: false, error: error.message });
+    }
+  })
+  .post(async (req, res) => {
+    try {
+      if (req.body.id !== req.params.id) {
+        const project = await getProject(req.params.id);
+        return res.render('pages/delete-project', { error: 'El ID no coincide', project });
+      }
+      await deleteProject(req.params.id);
+      res.redirect('/proyectos');
+    } catch (error) {
+      res.render('pages/error', { notFound: false, error: error.message });
+    }
+  });
 
 module.exports = projects;

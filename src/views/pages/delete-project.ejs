@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <%- include('../utils/head', { title: "Eliminar Tecnología | Admin-Portfolio"}) %>
+    <%- include('../utils/head', { title: "Eliminar Proyecto | Admin-Portfolio"}) %>
   </head>
   <body>
     <%# Barra de Navegación %>
@@ -15,14 +15,13 @@
         <p id="error-message"><%= error %></p>
       <% } %>
 
-      <form id="tech-form" action="/tecnologias/<%= tech._id %>/eliminar" method="post">
+      <form id="tech-form" action="/proyectos/<%= project._id %>/eliminar" method="post">
         <fieldset>
-          <legend>ID: <%= tech._id %></legend>
+          <legend>ID: <%= project._id %></legend>
           <label for="id">Ingrese el ID: <input type="text" name="id" id="id" minlength="24" required /></label>
         </fieldset>
         <input class="btn-submit" type="submit" value="ELIMINAR">
       </form>
-      
     </main>
   </body>
 </html>

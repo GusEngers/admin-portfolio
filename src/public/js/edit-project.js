@@ -1,17 +1,22 @@
 const button = document.getElementById('detail-button');
-button.setAttribute('disabled', true);
 
 const char = document.getElementById('char-length');
 const textarea = document.getElementById('description');
-char.innerText = textarea.innerText.length;
+char.innerText = textarea.textContent.length;
 
 textarea.addEventListener('input', (event) => {
   event.preventDefault();
   char.innerText = event.target.value.length;
 });
 
-let input = document.getElementById('task-0');
-let count = 1;
+let inputs = document.getElementsByName('tasks');
+let input = inputs[inputs.length - 1];
+
+if (!input.getAttribute('value')) {
+  button.setAttribute('disabled', true);
+}
+
+let count = input.length;
 
 function inputListener() {
   input.addEventListener('input', (event) => {
