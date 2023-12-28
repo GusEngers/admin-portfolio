@@ -1,5 +1,5 @@
 const { isObjectIdOrHexString } = require('mongoose');
-const { getTechs } = require('../controllers/techs');
+const upload = require('../config/storage');
 
 module.exports = {
   verifyId: (req, res, next) => {
@@ -19,8 +19,18 @@ module.exports = {
     req.body.details = details;
     next();
   },
-  verifyBodyProject: async (req, res, next) => {
+  verifyBodyProject: (req, res, next) => {
     let tasks = [];
+    if (!req.body.tasks.length) {
+      return next(new Error('El proyecto debe tener como mínimo una caracteristica'));
+    }
+    if (!req.body.techs) {
+      return next(new Error('El proyecto debe tener como mínimo una tecnología'));
+    }
+    if (typeof req.body.tasks === 'string') {
+      req.body.tasks = [req.body.tasks];
+      return next();
+    }
     for (let i = 0; i < req.body.tasks.length; i++) {
       if (!!req.body.tasks[i].length) {
         tasks.push(req.body.tasks[i]);
