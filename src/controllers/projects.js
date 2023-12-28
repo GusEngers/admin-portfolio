@@ -9,4 +9,10 @@ module.exports = {
       });
     return projects;
   },
+  addProject: async (project) => {
+    const newProject = new Project(project);
+    await newProject.save().catch((err) => {
+      throw new Error(err.message);
+    });
+  },
 };

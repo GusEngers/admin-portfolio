@@ -1,6 +1,6 @@
 const techs = require('express').Router();
 const { getTechs, getTech, updateTech, addTech, deleteTech } = require('../controllers/techs');
-const { verifyId, verifyBody } = require('../middlewares/verify');
+const { verifyId, verifyBodyTech } = require('../middlewares/verify');
 
 techs.get('/', async (req, res) => {
   try {
@@ -16,7 +16,7 @@ techs
   .get((req, res) => {
     res.render('pages/add-tech', { info: false, error: false });
   })
-  .post(verifyBody, async (req, res) => {
+  .post(verifyBodyTech, async (req, res) => {
     try {
       await addTech(req.body);
       res.render('pages/add-tech', { info: 'Nueva Tecnología Añadida', error: false });
@@ -39,7 +39,7 @@ techs
       res.render('pages/error', { notFound: false, error: error.message });
     }
   })
-  .post(verifyBody, async (req, res) => {
+  .post(verifyBodyTech, async (req, res) => {
     try {
       await updateTech(req.params.id, req.body);
       res.redirect('/tecnologias');

@@ -1,4 +1,5 @@
 const { isObjectIdOrHexString } = require('mongoose');
+const { getTechs } = require('../controllers/techs');
 
 module.exports = {
   verifyId: (req, res, next) => {
@@ -8,7 +9,7 @@ module.exports = {
     }
     next();
   },
-  verifyBody: (req, res, next) => {
+  verifyBodyTech: (req, res, next) => {
     let details = [];
     for (let i = 0; i < req.body.details.length; i++) {
       if (!!req.body.details[i].length) {
@@ -16,6 +17,16 @@ module.exports = {
       }
     }
     req.body.details = details;
+    next();
+  },
+  verifyBodyProject: async (req, res, next) => {
+    let tasks = [];
+    for (let i = 0; i < req.body.tasks.length; i++) {
+      if (!!req.body.tasks[i].length) {
+        tasks.push(req.body.tasks[i]);
+      }
+    }
+    req.body.tasks = tasks;
     next();
   },
 };
