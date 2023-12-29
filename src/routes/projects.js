@@ -72,6 +72,41 @@ projects
   );
 
 projects
+  .route('/:id/editar/imagenes')
+  .get(async (req, res) => {
+    try {
+      const project = await getProject(req.params.id);
+      if (project === null) {
+        throw new Error('Proyecto no encontrado');
+      }
+      res.render('pages/edit-images', { error: false, project });
+    } catch (error) {
+      res.render('pages/error', { notFound: false, error: error.message });
+    }
+  })
+  .post(UpProject, async (req, res) => {
+    try {
+      const images = req.files['images'];
+      const avatar = !req.files['avatar'] ? undefined : req.files['avatar'][0];
+      const project = await getProject(req.params.id);
+      if (!avatar && !images) {
+        return res.render('pages/edit-images', { error: 'No se envió ninguna imagen', project });
+      } else if (avatar && !images) {
+        await updateProject(req.params.id, { avatar });
+        return res.redirect('/proyectos');
+      } else if (images && !avatar) {
+        await updateProject(req.params.id, { images });
+        return res.redirect('/proyectos');
+      }
+      await updateProject(req.params.id, { avatar, images });
+      return res.redirect('/proyectos');
+    } catch (error) {
+      const project = await getProject(req.params.id);
+      res.render('pages/edit-images', { error: error.message, project });
+    }
+  });
+
+projects
   .route('/:id/eliminar')
   .get(async (req, res) => {
     try {
