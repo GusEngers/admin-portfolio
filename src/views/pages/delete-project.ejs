@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('../utils/head', { title: "Eliminar Proyecto | Admin-Portfolio"}) %>
+  </head>
+  <body>
+    <%# Barra de Navegación %>
+    <%- include('../components/navbar') %>
+
+    <%# Cuerpo de la Aplicación %>
+    <main id="new-main">
+      <h1>Eliminar tecnología</h1>
+
+      <% if (error) { %>
+        <p id="error-message"><%= error %></p>
+      <% } %>
+
+      <form id="tech-form" action="/proyectos/<%= project._id %>/eliminar" method="post">
+        <fieldset>
+          <legend>ID: <%= project._id %></legend>
+          <label for="id">Ingrese el ID: <input type="text" name="id" id="id" minlength="24" required /></label>
+        </fieldset>
+        <input class="btn-submit" type="submit" value="ELIMINAR">
+      </form>
+    </main>
+  </body>
+</html>

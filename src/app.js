@@ -11,7 +11,6 @@ app.use(require('morgan')('dev'));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 app.set('view engine', 'ejs');
-app.set('view options', { openDelimiter: '[', closeDelimiter: ']' });
 app.set('views', __dirname + '/views');
 
 app.use('/', router);

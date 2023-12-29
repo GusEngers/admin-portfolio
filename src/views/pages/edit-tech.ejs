@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('../utils/head', { title: "Editar Tecnología | Admin-Portfolio"}) %>
+  </head>
+  <body>
+    <%# Barra de Navegación %>
+    <%- include('../components/navbar') %>
+
+    <%# Cuerpo de la Aplicación %>
+    <main id="new-main">
+      <h1>Editar tecnología</h1>
+
+      <form id="tech-form" action="/tecnologias/<%= tech._id %>/editar" method="post">
+        <fieldset>
+          <legend>Información Principal</legend>
+          <label for="name">Nombre: <input value="<%= tech.name %>" placeholder="Javascript" type="text" name="name" id="name" minlength="3" required></label>
+          <label for="icon">Icono <em>(Atributo "icon" de Iconify)</em>: <input value="<%= tech.icon %>" placeholder="icon:234" type="text" name="icon" id="icon" minlength="3" required></label>
+        </fieldset>
+        <fieldset>
+          <legend>¿Tecnología destacada?</legend>
+          <label for="no-favorite" class="radio-label">
+            <% if (!tech.favorite) { %>
+              <input
+                type="radio"
+                name="favorite"
+                value="0"
+                id="no-favorite"
+                checked> NO</label>
+            <% } else { %>
+              <input type="radio" name="favorite" value="0" id="no-favorite"> NO</label>
+            <% } %>
+          <label for="yes-favorite" class="radio-label">
+            <% if (tech.favorite) { %>
+              <input
+                type="radio"
+                name="favorite"
+                value="1"
+                id="yes-favorite"
+                checked> SI</label>
+            <% } else { %>
+              <input type="radio" name="favorite" value="1" id="yes-favorite"> SI</label>
+            <% } %>
+        </fieldset>
+        <fieldset>
+          <legend>Detalles sobre la Tecnología</legend>
+          <div id="details-group">
+            <% if (!tech.details.length) { %>
+              <input id="detail-0" placeholder="Desarrollar componentes..." type="text" name="details" minlength="5">
+            <% } else { %>
+              <% tech.details.forEach((detail, index) => { %>
+                <input
+                  id=<%= "detail-" + index %>
+                  placeholder="Desarrollar componentes..."
+                  value="<%= detail %>"
+                  type="text"
+                  name="details"
+                  minlength="5">
+              <% }) %>
+            <% } %>
+          </div>
+          <button class="btn-edit" type="button" id="detail-button">Otro Detalle</button>
+        </fieldset>
+        <input class="btn-submit" type="submit" value="EDITAR">
+      </form>
+    </main>
+    <script src="/public/js/edit-tech.js"></script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('../utils/head', { title: "Nueva Tecnología | Admin-Portfolio"}) %>
+  </head>
+  <body>
+    <%# Barra de Navegación %>
+    <%- include('../components/navbar') %>
+
+    <%# Cuerpo de la Aplicación %>
+    <main id="new-main">
+      <h1>Nueva tecnología</h1>
+
+      <% if (info) { %>
+        <p id="info-message"><%= info %></p>
+      <% } %>
+      <% if (error) { %>
+        <p id="error-message"><%= error %></p>
+      <% } %>
+
+      <form id="tech-form" action="/tecnologias/nuevo" method="post">
+        <fieldset>
+          <legend>Información Principal</legend>
+          <label for="name">Nombre: <input placeholder="Javascript" type="text" name="name" id="name" minlength="3" required></label>
+          <label for="icon">Icono <em>(Atributo "icon" de Iconify)</em>: <input placeholder="icon:234" type="text" name="icon" id="icon" minlength="3" required></label>
+        </fieldset>
+        <fieldset>
+          <legend>¿Tecnología destacada?</legend>
+          <label for="no-favorite" class="radio-label">
+            <input type="radio" name="favorite" value="0" id="no-favorite" checked> NO</label>
+          <label for="yes-favorite" class="radio-label">
+            <input type="radio" name="favorite" value="1" id="yes-favorite"> SI</label>
+        </fieldset>
+        <fieldset>
+          <legend>Detalles sobre la Tecnología</legend>
+          <div id="details-group">
+            <input id="detail-0" placeholder="Desarrollar componentes..." type="text" name="details" minlength="5">
+          </div>
+          <button class="btn-edit" type="button" id="detail-button">Otro Detalle</button>
+        </fieldset>
+        <input class="btn-submit" type="submit" value="AÑADIR">
+      </form>
+    </main>
+    <script src="/public/js/add-tech.js"></script>
+  </body>
+</html>

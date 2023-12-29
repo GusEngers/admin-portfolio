@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <%- include('../utils/head', { title: "Editar Imagenes | Admin-Portfolio"}) %>
+  </head>
+  <body>
+    <%# Barra de Navegación %>
+    <%- include('../components/navbar') %>
+
+    <%# Cuerpo de la Aplicación %>
+    <main id="new-main">
+      <h1>Editar proyecto</h1>
+
+      <% if (error) { %>
+        <p id="error-message"><%= error %></p>
+      <% } %>
+
+      <form id="tech-form" action="/proyectos/<%= project._id %>/editar/imagenes" method="post" enctype="multipart/form-data">
+        <fieldset>
+          <legend>Imágenes (las imágenes enviadas sobreescribiran las actuales)</legend>
+          <label for="avatar">Perfil: <input accept="image/*" type="file" name="avatar" id="avatar"></label>
+          <label for="images">Adicionales: <input accept="image/*" type="file" name="images" id="images" multiple></label>
+        </fieldset>
+        <input class="btn-submit" type="submit" value="EDITAR" />
+      </form>
+    </main>
+  </body>
+</html>
